@@ -1,0 +1,795 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+/* si lavora dall'esterno verso l'interno*/
+
+
+:root {
+    --background: rgba(22.4%,22.4%,22.4%, 1); /* 1 sta ad indicare se esso deve essere trasparente o meno. ponendolo ad 1 non lo è*/
+    --hover: rgba(0%,91.8%,22%, 1);
+}
+
+html {
+    height:100%; /* questo mette l'html come fullsized*/
+    /*mettendo questo tag è stato possibile inserire min-height: 100%; poichè fa riferimento all'altezza max di html */
+}
+
+
+body {
+margin: 0;
+font-family: 'Work Sans', sans-serif;
+font-weight: 300;
+
+/*min-height: 100vh; su mobile è un problema poichè calcola anche la barra in alto quindi è da evitare*/
+min-height: 100%; /* non funzionerebbe mettendolo non a fine pagina*/
+display: flex; /*fa due colonne perchè è il diaplay base per il flex*/
+flex-direction: column;
+}
+
+
+header {
+    background-color: var(--background);
+    text-align: center;
+    position: fixed;
+    z-index: 999; /* per farlo stare sempre in alto*/
+    width: 100%;
+}
+
+/************************************************************************/
+
+/*footer {
+    background-color: var(--background);
+    padding: 2em;
+    margin-top:auto; /*lo mette sotto*/
+    /*box-sizing: border-box;
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /*mette tutto in colonna*/
+   /* text-align: center;
+}
+
+.footer-content h4{
+    font-size: 1.5rem;
+    /*font-weight: 400;*/
+  /* text-transform: capitalize;
+    line-height: .5rem;
+}
+
+.footer-content p {
+    max-width: 500px ;
+    margin: 5px auto;
+    line-height: 14px;
+    font-size: 14px;
+}
+
+.footer_el{
+    list-style: none ;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    margin: 0.5rem 0 0.5rem  0 ;
+}
+
+.footer_el li{
+    margin:0 10px;
+}
+
+.footer_el a{
+    text-decoration: none;
+    color:white;
+}
+
+.footer_el a i{
+    font-size: 1.1rem;
+    transition: color .4 ease;
+}
+
+.footer_el a:hover {
+    color: var(--hover);
+}
+
+.footer_el a:hover i{
+    color: var(--hover);
+}
+
+.footer-bottom {
+    text-align:center;
+}
+
+.footer-bottom p{
+    font-size: 0.9em;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.footer-bottom span {
+    text-transform: uppercase;
+}*/
+
+
+.footercontainer{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-family: 'Work Sans', sans-serif;
+    margin-top:auto;
+}
+
+.container{
+    max-width: 1170px;
+    margin:auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul {
+    list-style: none;
+}
+
+.footer{
+    background-color: var(--background);
+    padding: 50px 0;
+    
+}
+
+.footer-col{
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-col h4{
+    font-size: 18px;
+    color: white;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left:0;
+    bottom: -10px;
+    background-color: var(--hover);
+    height: 2px;
+    box-sizing: border-box;
+    width: 60px;
+}   
+
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: normal;
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer-col ul li a:hover{
+    color: var(--hover);
+    padding-left: 8px;
+}
+
+.footer-col .social-links a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.2);
+    margin:0  10px 10px 0;
+    text-align:center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.footer-col .social-links a:hover{
+    color: var(--hover);
+}
+
+.footer-bottom {
+    text-align:center;
+    color: white;
+}
+
+.footer-bottom p{
+    font-size: 0.9em;
+    word-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.footer-bottom span {
+    text-transform: uppercase;
+    color: var(--hover);
+}
+
+
+@media(max-width: 767px){
+    .footer-col{
+        width: 50%;
+        margin-bottom: 30px;
+    }
+
+}
+
+@media(max-width: 574px){
+    .footer-col{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+}
+
+
+/***********************************************************************************************/
+
+#logo {
+   /* position: relative;
+    top:0;
+    right: 15%;*/
+    width: 100px;
+    height: 100px;
+   }
+
+.nav-toggle{
+    display:none;
+}
+
+.nav-toggle-label {
+    position: absolute;
+    top:0;
+    left:0;
+    margin-left: 1em; /* avendo dato anche ai li un 1em conviene fare tutto allineato*/
+    height:100%;
+    display: flex;
+    align-items: center; /*ciò ci permette di centrare la X nell'header*/
+}
+
+/*così facendo stiamo selezionando le 3 parti di .nav-toggle-label span. prima centro e dopo*/
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background:white;
+    height:2px;
+    width:2em;
+    border-radius: 2px;
+    position:relative; /* questo è relativo solo a .nav-toggle-label span*/
+}
+/*fino ad ora si vede solo una linea bianca. per far sì che si vedano tutte e 3 è necessario:*/
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after{
+    content: ''; /*se mettiamo content none esso non mosterà niente*/
+    position: absolute;
+
+}
+
+.nav-toggle-label span::before{
+    bottom:7px;
+
+}
+
+.nav-toggle-label span::after{
+    top:7px;
+}
+
+nav {
+    position: absolute;/* dato che header ha già position fixed, questa posizione assoluta sarà relativa */
+    text-align: left; /* il testo non è al centro perchè è strano vederlo così*/
+    top: 100%; /*mettessi di meno andrebbe a scontrarsi con l'header. metttendo 100% esso si piazza direttamente sotto*/
+    left: 0; /* abbiamo dello spazio a causa di nav*/
+    background-color: var(--background) ;
+    width: 100%; /* questo per far sì che l'altezza sia fin dove arriva il nav*/
+    transform: scale(1, 0); /*la prima per quanto grande farlo, la seconda quanto staccata */
+    /*il vantaggio di usare transform e non display:none è che posso fare una transizione*/
+    transform-origin: top; /*questo ci dà l'origine di partenza*/
+    transition: transform 250ms ease-in-out /* in questo modo esso parte a mostrarsi dal centro*/
+}
+
+
+nav ul {
+    margin: 0;
+    padding:0;
+    list-style: none;
+}
+
+nav li {
+    margin-bottom: 1em; /* questo sarà necessrio più quando saranno l'uno sotto l'altro che di lato*/
+    margin-left: 1em;
+}
+
+nav a {
+    color: white; /*da cambiare*/
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    opacity:0; /*esso ci va a dare l'opacità. i link ci sono ma non sono visibili*/
+    transition: opacity 70ms ease-in-out; 
+    /*il delay però si applica anche quando si torna sopra e non è ottimale come cosa*/
+
+}
+
+nav a:hover {
+    color: var(--hover);
+    
+}
+
+.nav-toggle:checked ~  nav { /*va a controllare se una checkbox è checked*/ 
+    /*~ cerca le sorelle precedenti che non devono necessariamente essere immediatamente dopo*/
+   /*nel caso in cui sia checked mostra a schermo il nav*/
+    transform: scale(1,1);
+}
+
+.nav-toggle:checked ~  nav a{/*abbiamo un ancora vicino ad un nav che è vicino ad un .nav-toggle-checked*/
+    opacity: 1;
+    transition: opacity 120ms ease-in-out 120ms;/* il secondo 120ms indica dopo quanto far partire l'animazione scritta dopo opacity*/
+    /*mettendolo qui solo quando esso è checked ci sarà questa animazione*/
+}
+
+/*********************************************************************************/
+    
+.container_buttons{ 
+    margin: 5%;
+    padding: 5%;
+   /* width: 100%;
+    height: 100%;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.button {
+    width: 200px;
+    height: 100px;
+    background: #393939;
+    transition: transform .3s;
+    margin: 10px;
+    overflow: hidden;
+}
+
+
+.button #img {
+    width: 185px;
+    height: 100px;
+}
+
+.button #video{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+
+}
+
+.button:hover{
+ background: none;
+ border: none;
+}
+
+.button:hover #video {
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(10px);
+    transform: translate3d(10px);
+    box-shadow: 2px 2px 26px 0px rgba(1,1,1, 0.3)
+}
+
+
+.button:hover #img {
+    display: none;
+}
+
+/*********************************************************************************/
+#slider{
+   margin-top: 120px;
+   overflow:hidden; 
+   margin-left: 20%;
+   margin-right: 20%;
+}
+
+.f_slider{
+    padding-top: 3%;
+    position:relative;
+    width: 500%;
+    margin: 0;
+    left: 0; /*ci mette tutto a destra*/
+    animation: 20s slider infinite;
+}
+
+#slider figure img{
+    width: 20%;
+    float: left;
+}
+
+/* quello che stiamo dciendo è che sia a 0% che a 20% vogliamo vedere left: 0*/
+@keyframes slider {
+    0% {
+        left: 0;
+    }
+    20% {
+        left:0;
+    }
+    25%{
+        left: -100%;
+    }
+    45%{
+        left: -100%;
+    }
+    50%{
+        left: -200%;
+    }
+    70%{
+        left: -200%;
+    }
+    75%{
+        left: -300%;
+    }
+    95%{
+        left: -300%;
+    }
+    100%{
+        left: -400%;
+    }
+}
+
+
+/****************/
+/* PER SCRIVERE SULLO SLIDER BASTA VEDERE  COME è STATO SCRITTO PER LE CARD*/
+
+
+.card_container{
+    background: white;
+}
+
+.grid{
+    margin: 80px;
+    displaY: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    align-items: center;
+}
+
+.grid > article {
+    background: white;
+    border: none;
+   /* border-radius: 20px;*/
+    text-align:center;
+    width: 250px;
+    transition: transform .3s;
+}
+
+.grid > article:hover{
+    transform: translateY(5px);
+    box-shadow: 2px 2px 26px 0px rgba(0,0,0,0.3)
+}
+
+.grid > article img{
+    width:100%;
+    /*border-top-left-radius: 20px;
+    border-top-right-radius: 20px;*/
+}
+
+
+.c_container{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    background: white;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.card_container{
+    width: 90%;
+    margin: 50px auto;
+
+}
+
+.heading{
+    text-align: center;
+    font-size:30px;
+    margin-bottom: 50px;
+}
+
+.row{
+    display: flex; /*li mette tutti sulla stessa riga */
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+}
+
+.card{
+    width:20%;   
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 50px;
+    transition: 0.3s;
+}
+
+.card-header{
+    text-align: center;
+    padding: 50px 10px;
+    
+}
+
+.title{
+    opacity: 0 ;
+}
+
+.title_good{
+    font-size: 47px;
+    color: var(--hover)
+}
+
+.ch1{
+    background: url("./Images/card/marvel.jpg");
+    z-index: 1;
+    
+}
+
+.ch2{
+    background: var(--background);
+
+}
+
+.ch3{
+    background: url("./Images/card/harrypotter.jpg");
+}
+
+.ch4{
+    background: url("./Images/card/dinsey.jpg");
+}
+
+.card-body{
+    padding: 30px 20px;
+    text-align: center;
+    font-size:18px;
+}
+
+.card-body .btn{
+    display: block;
+    color: #fff;
+    text-align:center;
+    background: var(--background);
+    /*margin-top: 30px;*/
+    text-decoration: none;
+    padding: 10px 5px;
+    margin-bottom: 0%; 
+}
+
+.card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 40px -10px rgba(0,0,0,0.25);
+}
+
+.btn:hover {
+    color: var(--hover)
+}
+
+
+@media screen and (max-width:1000px) {
+    #slider {
+        margin-left:  10%;
+        margin-right: 10% ;
+    }
+    .card {
+        width:40%;
+    }
+}
+
+@media screen and (max-width:620px) {
+    #slider {
+        margin-left:  10%;
+        margin-right: 10% ;
+    }
+
+    .card_container{
+        width: 100%;
+    }
+
+    .heading{
+        padding:20px;
+        font-size:20px;
+    }
+
+    .card {
+        width:80%;
+    }
+}
+
+
+/********************************************************************************/
+/*
+.card_container {
+    display: flex; /*in questo modo tutto ciò che è contenuto nel div potrà essere centrato*/
+  /*  justify-content: center;
+    align-items: center;
+    
+}
+
+.card{
+    width:300px;
+    height: 400px;
+    display: flex; /*in questo modo tutto ciò che è contenuto nel div potrà essere centrato*/
+  /*  justify-content: center;
+    align-items: center;
+    overflow: hidden; /*l'immagine zoommata che esce dalla card non viene mostrata*/
+   /* cursor: pointer; /* fa vedere la manina quando ci passo sopra. successivamente da rimuovere*/
+    /*poichè queste ancore saranno link*/
+   /* margin: 1%;
+}
+
+.img_card {
+    width:100%;
+    transition: all 0.3s ease-in-out; /*rende l'effetto zoom più fluido*/
+/*}
+
+.title_card{
+    position: absolute;
+    font-size: 2em;
+    color: white;
+    z-index: 10;
+    filter:opacity(0); /*in questo modo senza passaci sopra la scritta non si vede*/
+  /*  transition: all 0.3s ease-in-out;
+}
+
+.description_card{
+    position:absolute;
+    font-size: 1em;
+    color:white;
+    margin-top: 10%;
+    z-index: 10;
+    filter:opacity(0);
+    transition: all 0.3s ease-in-out;
+}
+
+
+.card:hover .img_card { /* vogliamo modificare l'immagine non altro per questo dobbiamo selezionare anche l'img*/
+    /* così facendo applichiamo uno stile quando passiamo sopra l'immagine*/
+  /*  transform: scale(1.1); /*questo per ingrandire l'immagine passandoci su*/
+   /* filter:brightness(0.6);
+}
+
+.card:hover .title_card, .card:hover .description_card {
+    filter: opacity(1);
+}
+
+/***************************************************************************************/
+
+.buttons{
+    margin: 1%;
+    padding: 1%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    margin: 1%;
+}
+
+/*.buttons_container{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background);
+}
+
+.buttons{
+    margin: 1%;
+}
+
+.button{
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    border: 2px solid #111;
+    text-transform: uppercase;
+    color: #111;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.button::before{
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% - 12px);
+    transition: 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+.button:hover::before{
+    transform: scaleY(0);
+}
+
+.button span {
+    position: relative;
+    z-index: 10;
+}*/
+
+ @media screen and (min-width: 800px){ /*questo serve per visualizzare quando lo schermo non è piccolo*/
+     .nav-toggle-label{
+         display: none;
+     }
+
+     header{
+         display: grid;
+         grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr; /*sto settando 4 colonne*/
+     }
+
+     #logo {
+        grid-column: 2 / 3 ; /*dico dove si deve spostare l'immagine*/
+        margin-top: .5em;
+        margin-bottom: .5em;
+     }
+
+     nav{
+         all: unset; /*questo permette di levare tutto lo stile definito in nav sopra piuttosto che preoccuparsene per uno alla volta*/
+        grid-column: 3 / 4; /*vado  a mettere il tutto nella colonna 3/4*/
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+     nav ul{
+        display: flex;
+     } 
+
+     nav li {
+        margin-left: 3em;
+        margin-bottom: 0;
+     }
+ 
+     nav a {
+         opacity: 1;
+         position: relative;
+     }
+
+     nav a::before {
+        content:'';
+        display: block;
+        height: 5px;
+        background: var(--hover);
+        position: absolute;
+        top: -.75em;
+        left:0;
+        right:0;
+        transform: scale(0, 1);
+        transform-origin: right;
+        transition: transform ease-in-out 150ms;
+     }
+
+     nav a:hover::before{
+         transform: scale(1,1);
+     }
+  
+ }

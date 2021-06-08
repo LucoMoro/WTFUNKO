@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+    <Resource name="jdbc/WHATTHEFUNKO2"
+        auth="Container"
+        driverClassName="com.mysql.cj.jdbc.Driver"
+        type="javax.sql.DataSource"
+        username="root"
+        password="Pippo123"
+        url="jdbc:mysql://localhost:3306/WHATTHEFUNKO2?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"/>
+</Context>
