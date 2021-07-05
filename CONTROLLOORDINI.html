@@ -1,0 +1,112 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	
+
+<!DOCTYPE html>
+<html>
+    <%@ page contentType="text/html; charset=UTF-8" 
+    import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, 
+    it.unisa.model.UserBean, 
+    it.unisa.model.OrderBean "%>  
+    <head>
+        <link rel="stylesheet" type="text/css" href="CSS_WTFUNKO.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+
+        
+        <div class="c_table">
+
+            <div class="table-container">
+                <% UserBean user = (UserBean) request.getSession().getAttribute("utente") ;
+		if(user==null){%>
+          <img src="/Images/prodotti/sadness.jpg" alt="Sadness">
+		  <p> Non hai i requisiti per accedere a questa pagina, premi <a href = "ProductView.jsp"> qui</a> per tornare alla pagina principale.
+	  <% }
+	  
+	   if(user.isAdmin() == false)
+	   {%>
+		  <p> Non hai i requisiti per accedere a questa pagina, premi <a href = "ProductView.jsp"> qui</a> per tornare alla pagina principale.
+	  <% }%>
+	  
+	  <%
+	  	String type = (String) request.getSession().getAttribute("type");
+	  	ArrayList<OrderBean> ordini = new ArrayList<OrderBean> ();
+	  	OrderBean ordine;
+	  	if(type.contentEquals("nominativo"))
+	  	{
+	  		ordini = (ArrayList<OrderBean>) request.getSession().getAttribute("nameOrdini");
+	  	}
+	  	else
+	  	{
+	  		ordini = (ArrayList<OrderBean>) request.getSession().getAttribute("dateOrdini");
+	  	}
+	  %>
+	  	
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID cliente</th>
+                            <th>Codice ordine</th>
+                            <th>Data ordine </th>
+                        </tr>
+                    </thead>
+                    <% for(int i = 0; i<ordini.size(); i++) 
+		            {
+			ordine = ordini.get(i);
+			
+		            %>
+
+                    <tbody>
+                        <tr>
+                            <td data-label="ID cliente"><%=ordine.getID()%></td>
+                            <td data-label="Codice ordine"><%=ordine.getOrderCode()%></td>
+                            <td data-label="Data ordine"><%=ordine.getDataOrdine().toString()%></td>
+                        </tr>
+                    </tbody>
+                    <% } %>
+                </table>
+
+                   <div class="page-number-cont">
+                        <ul class=" ul-page">
+                            <li><a href="#" class="prev"> &lt; Prev </a></li>
+                            <li class="PageNumber active"><a href="#">1</a></li>
+                            <li class="PageNumber"><a href="#">2</a></li>
+                            <li class="PageNumber"><a href="#">3</a></li>
+                            <li class="PageNumber"><a href="#">4</a></li>
+                            <li><a href="#" class="next">  Next &gt; </a></li>
+                        </ul>
+                    </div>
+
+                     
+            </div>
+
+
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.next').click(function(){
+                    $('.ul-page').find('.PageNumber.active').next()
+                    .addClass('active');
+                    $('.ul-page').find('.PageNumber.active').prev()
+                    .removeClass('active');
+                })
+
+                $('.prev').click(function(){
+                    $('.ul-page').find('.PageNumber.active').prev()
+                    .addClass('active');
+                    $('.ul-page').find('.PageNumber.active').next()
+                    .removeClass('active');
+                })
+            })
+
+        </script>
+
+    </body>
+
+</html>

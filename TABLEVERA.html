@@ -1,0 +1,153 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+
+<%
+ArrayList<ProductBean> products = (ArrayList<ProductBean>) request.getSession().getAttribute("products");
+if(products == null) {
+    response.sendRedirect("./product");	
+    return;
+}
+
+int index = (int)request.getSession().getAttribute("index");
+
+ProductBean product = (ProductBean) request.getAttribute("product"); //definisce una varibile di tipo ProductBean e preleva i valori
+
+Cart cart = (Cart) request.getAttribute("cart"); //definisce una variabile di tipo Cart e preleva i valori
+
+//request.getSession().removeAttribute("utente");
+
+UserBean utente= (UserBean) request.getSession().getAttribute("utente"); //definisce una variabile di tipo UserBean e preleva i valori
+
+request.getSession().setAttribute("Action", "view"); //definisce la variabile @action= view
+%>
+
+<!DOCTYPE html>
+<html>
+    <%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.UserBean "%>
+    <head>
+        <link rel="stylesheet" type="text/css" href="CSS_WTFUNKO.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+
+        
+        <div class="c_table">
+
+            <div class="table-container">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="thimg">Immagine</th>
+                            <th>Codice prodotto <a href="product?sort=code">Sort</a></th>
+                            <th>Nome prodotto <a href="product?sort=code">Sort</a></th>
+                            <th>Prezzo</th>
+                            <th>Rarità</th>
+                            <th>Disponibilità</th>
+                            <th>Franchise</th>
+                            <th>Serie</th>
+                            <th>Score medio</th>
+                            <th>Altro</th>
+                        </tr>
+                    </thead>
+
+    <%
+        if (products != null && products.size() != 0) {
+            for(int i = 0 + index*10; i< index*10+10; i++)
+            {
+                if(i == products.size()) break;
+                ProductBean bean = products.get(i);
+                if(bean != null){
+    %>
+                    <tbody>
+                        <tr>
+                            <td data-label="Immagine"><img src="Images/prodotti/venomgroot.jpg" alt="Venom Groot" class="timg"></td>
+                            <td data-label="Codice prodotto"> <%=bean.getCode()%> </td>
+                            <td data-label="Nome prodotto"><%=bean.getName()%></td>
+                            <td data-label="Prezzo"><%=bean.getPrice()%></td>
+                            <td data-label="Rarità"><%=bean.getRarity() %></td>
+                            <td data-label="Disponibilità"> <span class="NDisponibile"> [ No ]</span></td>
+                            <td data-label="Franchise"> <%=bean.getFranchiseName() %></td>
+                            <td data-label="Serie"><%=bean.getSeries() %></td>
+                            <td data-label="Score medio"><%=bean.getMediumScore() %></td>
+                            <td data-label="Altro">
+                                <form action="Prodotto" method="post">
+                                    <input type="hidden" name="id" value="<%= bean.getCode() %>"> 
+                                    <input type="submit" value="Dettagli">
+                                </form>
+
+                                <a href="product?action=addC&id=<%=bean.getCode()%>">Add to cart</a>
+                            </td>
+                        </tr> 
+                            
+                    </tbody>
+
+                    <%
+                                    }}
+                        } else {
+                    %>
+                    
+                    <tr>
+                        <td colspan="6">No products available</td>
+                    </tr>
+                    <%
+                        }
+                    %>
+
+                </table>
+
+
+                   <div class="page-number-cont">
+                        <ul class=" ul-page">
+                            <li><a href="AllProductServlet?action=sub" class="prev" id="prev"> &lt; Prev </a></li>
+                            <li class="PageNumber active"><a href="AllProductServlet?action=set?index=1">1</a></li>
+                            <li class="PageNumber"><a href="AllProductServlet?action=set?index=2">2</a></li>
+                            <li class="PageNumber"><a href="AllProductServlet?action=set?index=3">3</a></li>
+                            <li class="PageNumber"><a href="AllProductServlet?action=set?index=4">4</a></li>
+                            <li><a href="AllProductServlet?action=add" class="next" id="next">  Next &gt; </a></li>
+                        </ul>
+                    </div>
+
+                    <div id="index" style="display: none"> <%= index %> </div>        
+            </div>
+
+
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.next').click(function(){
+                    $('.ul-page').find('.PageNumber.active').next()
+                    .addClass('active');
+                    $('.ul-page').find('.PageNumber.active').prev()
+                    .removeClass('active');
+                })
+
+                $('.prev').click(function(){
+                    $('.ul-page').find('.PageNumber.active').prev()
+                    .addClass('active');
+                    $('.ul-page').find('.PageNumber.active').next()
+                    .removeClass('active');
+                })
+            })
+
+        </script>
+
+        <script type="text/javascript">
+            var index= $('#index').val();
+            if(index==0){
+                $('#prev').css("display", "none");
+            }
+
+            if(index==4){
+                $('#next').css("display", "none");
+            }
+
+        </script>
+
+    </body>
+
+</html>

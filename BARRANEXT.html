@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <script src="momentum.min.js"> </script>
+    </head>
+
+    <body>
+
+    <div class="page-number-cont">
+        <ul class=" ul-page">
+            <li><a href="#" class="prev"> &lt; Prev </a></li>
+            <li class="PageNumber active"><a href="#">1</a></li>
+            <li class="PageNumber"><a href="#">2</a></li>
+            <li class="PageNumber"><a href="#">3</a></li>
+            <li class="PageNumber"><a href="#">4</a></li>
+            <li><a href="#" class="next">  Next &gt; </a></li>
+        </ul>
+    </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.next').click(function(){
+                    $('.ul-page').find('.PageNumber.active').next()
+                    .addClass('active');
+                    $('.ul-page').find('.PageNumber.active').prev()
+                    .removeClass('active');
+                })
+
+                $('.prev').click(function(){
+                    $('.ul-page').find('.PageNumber.active').prev()
+                    .addClass('active');
+                    $('.ul-page').find('.PageNumber.active').next()
+                    .removeClass('active');
+                })
+            })
+
+        </script>
+    </body>
+
+</html>

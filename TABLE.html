@@ -1,0 +1,132 @@
+
+
+<!DOCTYPE html>
+<html>
+   
+    <head>
+        <link rel="stylesheet" type="text/css" href="CSS_WTFUNKO.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+
+        
+        <div class="c_table">
+
+            <div class="table-container">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="thimg">Immagine</th>
+                            <th>Codice prodotto </th>
+                            <th>Nome prodotto </th>
+                            <th>Prezzo</th>
+                            <th>Rarità</th>
+                            <th>Disponibilità</th>
+                            <th>Franchise</th>
+                            <th>Serie</th>
+                            <th>Score medio</th>
+                            <th>Altro</th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        <tr>
+                            <td data-label="Immagine"><img src="Images/prodotti/venomgroot.jpg" alt="Venom Groot" class="timg"></td>
+                            <td data-label="Codice prodotto"> 1 </td>
+                            <td data-label="Nome prodotto">Venom Groot</td>
+                            <td data-label="Prezzo">30</td>
+                            <td data-label="Rarità">1</td>
+                            <td data-label="Disponibilità"> <span class="NDisponibile"> [ No ]</span></td>
+                            <td data-label="Franchise"> Marvel</td>
+                            <td data-label="Serie">Venomized</td>
+                            <td data-label="Score medio">8.6</td>
+                            <td data-label="Altro"><a href=# class="btn_table">DETTAGLI</a>
+                                <a href=# class="btn_table">CARRELLO</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Immagine"><img src="Images/prodotti/venomizedironman.jpg" alt="Venomized Iron Man" class="timg"></td>
+                            <td data-label="Codice prodotto"> 2 </td>
+                            <td data-label="Nome prodotto"> Venomized Iron Man</td>
+                            <td data-label="Prezzo">16</td>
+                            <td data-label="Rarità">0</td>
+                            <td data-label="Disponibilità"> <span class="YDisponibile"> [ Si ]</span></td>
+                            <td data-label="Franchise">Marvel</td>
+                            <td data-label="Serie">Venomized</td>
+                            <td data-label="Score medio">8.2</td>
+                            <td data-label="Altro"><a href=# class="btn_table">DETTAGLI</a>
+                                <a href=# class="btn_table">CARRELLO</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Immagine"><img src="Images/prodotti/tempestavenomizzata.jpg" alt="Tempesta Venomizzata" class="timg"></td>
+                            <td data-label="Codice prodotto"> 3 </td>
+                            <td data-label="Nome prodotto"> Tempesta Venomizzata</td>
+                            <td data-label="Prezzo">16</td>
+                            <td data-label="Rarità">0</td>
+                            <td data-label="Disponibilità"> <span class="YDisponibile"> [ Si ]</span></td>
+                            <td data-label="Franchise">Marvel</td>
+                            <td data-label="Serie">Venomized</td>
+                            <td data-label="Score medio">8.0</td>
+                            <td data-label="Altro"><a href=# class="btn_table">DETTAGLI</a>
+                                <a href=# class="btn_table">CARRELLO</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Immagine"><img src="Images/prodotti/venomizedcap.jpg" alt="Venomized Captain America" class="timg"></td>
+                            <td data-label="Codice prodotto"> 4 </td>
+                            <td data-label="Nome prodotto"> Venomized Captain America</td>
+                            <td data-label="Prezzo">16</td>
+                            <td data-label="Rarità">0</td>
+                            <td data-label="Disponibilità"> <span class="YDisponibile"> [ Si ]</span></td>
+                            <td data-label="Franchise">Marvel</td>
+                            <td data-label="Serie">Venomized</td>
+                            <td data-label="Score medio">8.0</td>
+                            <td data-label="Altro"><a href=# class="btn_table">DETTAGLI</a>
+                            <a href=# class="btn_table">CARRELLO</a></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                   <div class="page-number-cont">
+                        <ul class=" ul-page">
+                            <li><a href="#" class="prev"> &lt; Prev </a></li>
+                            <li class="PageNumber active"><a href="#">1</a></li>
+                            <li class="PageNumber"><a href="#">2</a></li>
+                            <li class="PageNumber"><a href="#">3</a></li>
+                            <li class="PageNumber"><a href="#">4</a></li>
+                            <li><a href="#" class="next">  Next &gt; </a></li>
+                        </ul>
+                    </div>
+
+                     
+            </div>
+
+
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.next').click(function(){
+                    $('.ul-page').find('.PageNumber.active').next()
+                    .addClass('active');
+                    $('.ul-page').find('.PageNumber.active').prev()
+                    .removeClass('active');
+                })
+
+                $('.prev').click(function(){
+                    $('.ul-page').find('.PageNumber.active').prev()
+                    .addClass('active');
+                    $('.ul-page').find('.PageNumber.active').next()
+                    .removeClass('active');
+                })
+            })
+
+        </script>
+
+    </body>
+
+</html>

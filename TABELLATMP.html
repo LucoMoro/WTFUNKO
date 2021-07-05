@@ -1,0 +1,153 @@
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+
+<%
+ArrayList<ProductBean> products = (ArrayList<ProductBean>) request.getSession().getAttribute("products");
+if(products == null) {
+    response.sendRedirect("./product");	
+    return;
+}
+
+int index = (int)request.getSession().getAttribute("index");
+
+ProductBean product = (ProductBean) request.getAttribute("product"); //definisce una varibile di tipo ProductBean e preleva i valori
+
+Cart cart = (Cart) request.getAttribute("cart"); //definisce una variabile di tipo Cart e preleva i valori
+
+//request.getSession().removeAttribute("utente");
+
+UserBean utente= (UserBean) request.getSession().getAttribute("utente"); //definisce una variabile di tipo UserBean e preleva i valori
+
+request.getSession().setAttribute("Action", "view"); //definisce la variabile @action= view
+%>
+
+<!DOCTYPE html>
+<html>
+<%@ page contentType="text/html; charset=UTF-8" import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.UserBean "%>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="CSS_WTFUNKO.css">
+<title>WHAT THE FUNKO</title>
+</head>
+
+<style>
+:root {
+--background: rgba(22.4%,22.4%,22.4%, 1); /* 1 sta ad indicare se esso deve essere trasparente o meno. ponendolo ad 1 non lo è*/
+--hover: rgba(0%,91.8%,22%, 1);
+}
+
+.btn{
+display: block;
+color: #fff;
+text-align:center;
+background: var(--background);
+text-decoration: none;
+padding: 10px 5px;
+margin-bottom: 0%; 
+}
+.btn:hover {
+color: var(--hover)
+}
+</style>
+
+
+<body>
+
+
+<% if(utente==null)
+{ %>
+<p> Non sei connesso, <a href="Login.jsp"> accedi </a> </p>
+<%}
+
+else { %>
+<p> Benvenuto <%= utente.getID() %></p>
+
+<% if(utente.isAdmin())
+{%>
+    <form action = "AreaRiservata.jsp" method = "post"> 
+        <input type = "submit" value ="vai alla area riservata">
+    </form>
+<%} %>
+
+<form action = "LogOutServlet" method = "post">
+<input type = "submit" value = "Esci">
+</form>
+<%}%>
+
+
+<h2>Products</h2>
+<a href="product">List</a>
+<table border="1">
+    <tr>
+        <th>Code <a href="product?sort=code">Sort</a></th>
+        <th>Name <a href="product?sort=code">Sort</a></th>
+        <th>Price</th>
+        <th>Rarity</th>
+        <th>Dimension</th>
+        <th>Franchise Name</th>
+        <th>Series</th>
+        <th>Medium score</th>
+        <th>Action</th>
+    </tr>
+    <%
+        if (products != null && products.size() != 0) {
+            for(int i = 0 + index*10; i< index*10+10; i++)
+            {
+                if(i == products.size()) break;
+                ProductBean bean = products.get(i);
+                if(bean != null){
+    %>
+    <tr>
+        <td><%=bean.getCode()%></td>
+        <td><%=bean.getName()%></td>
+        <td><%=bean.getPrice()%></td>
+        <td><%=bean.getRarity() %></td>
+        <td><%=bean.getDimension() %></td>
+        <td><%=bean.getFranchiseName() %></td>
+        <td><%=bean.getSeries() %></td>
+        <td><%=bean.getMediumScore() %></td>
+         <td>
+            
+            <form action="Prodotto" method="post">
+            <input type="hidden" name="id" value="<%= bean.getCode() %>"> 
+            <input type="submit" value="Dettagli">
+            </form>
+            
+            <a href="product?action=addC&id=<%=bean.getCode()%>">Add to cart</a>
+            
+            </td>
+    </tr>
+    <%
+            
+                }}
+        } else {
+    %>
+    <tr>
+        <td colspan="6">No products available</td>
+    </tr>
+    <%
+        }
+    %>
+</table>
+
+<% if(index == 0)
+    {
+    %>
+        <a class = "btn" href = "AllProductServlet?action=add">Pagina Successiva &gt</a>
+</form>
+<%}else if(index==3){%>
+<a class = "btn" href = "AllProductServlet?action=sub">&lt Pagina Precedente </a>
+<%}else if(index>0 && index <3)
+    {
+    %>
+<a class = "btn" href = "AllProductServlet?action=sub">&lt Pagina Precedente </a>
+
+
+<a class = "btn" href = "AllProductServlet?action=add">Pagina Successiva &gt</a>
+    <%} %>
+
+<a href="Carrello.jsp" target="_blank"> Vai al carrello </a>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<% UserBean utente= (UserBean) request.getSession().getAttribute("utente"); 
+	request.getSession().setAttribute("Action", "buy");
+%>
+<!DOCTYPE html>
+<html>
+
+    <%@ page contentType="text/html; charset=UTF-8"
+	import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.UserBean,  it.unisa.model.CartItem"%>
+    
+    <head>
+        <link rel="stylesheet" type="text/css" href="CSS_WTFUNKO.css">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <div class="cartcontainer">
+
+            <div class="small-container cart-page">
+
+                <table class="cart-table">
+                    <tr>
+                        <th>Prodotto</th>
+                        <th>Quantità</th>
+                        <th>Prezzo</th>
+                    </tr>
+
+                    <%
+                    ArrayList<CartItem> carrello= cart.getProducts();
+                
+                    ProductBean beancart;
+                    
+                    int quantità=0;
+                    
+                for(int i=0; i<carrello.size(); i++){
+                    beancart=carrello.get(i).getProduct();
+                    quantità=carrello.get(i).getQuantity();
+                     %>
+
+                    <tr>
+                        <td>
+                           <div class="cart-info">
+                               <img src="Images/prodotti/carnagesuper.jpg" alt="Carnage" class="cart-img">
+                               <div>
+                                   <p> <%=beancart.getCode()%>: <%=beancart.getName()%> </p>
+                                   <small><%=beancart.getPrice()%></small>
+                                   <br>
+                                   <a href="#"><form action = "ActionServlet"  method = "post">
+                                    <button type = "submit" name = "action" value = "remove"> Rimuovi il prodotto</button>
+                                                </form>
+                                   </a>
+                               </div>
+                           </div>
+                        </td>
+                        <td><input type="number" value="1"></td>
+                        <td> INSERIE  NUMERO PRODOTTI*PREZZO</td>
+                    </tr>
+                    <% somma= somma + (beancart.getPrice()* quantità); %>
+		            <% } %>
+                </table>
+
+                <div class="total-price">
+
+                    <table>
+                        <tr>
+                            <td>Subtotal</td>
+                            <td> <%= somma %></td>
+                        </tr>
+
+                        <tr>
+                            <td>IVA</td>
+                            <td> INSERIRE CALCOLO IVA </td>
+                        </tr>
+
+                        <tr>
+                            <td>Totale</td>
+                            <td> INSERIRE TOTALE CON IVA</td>
+                        </tr>
+                    </table>
+
+                </div>
+            
+               
+
+                <div class="total-price">
+                    if(utente==null){
+                        %>
+                    
+                    <form action="Login.jsp" method="post">
+                        <input type="submit" value="procedi all'acquisto" class="submitcart">
+                    </form>
+                    <%}
+
+                    else if (utente.getIndirizzo().contentEquals("")) { %>
+                        <form action="Register2.jsp" method="post">
+                            <input type="submit" value="Immetti dati Consegna e Pagamento" class="submitcart">
+                        </form>
+                    
+                        <%}
+                    else
+                    { %>
+                        <form action="Checkout" method="post">
+                            <input type="submit" value="procedi all'acquisto" class="submitcart">
+                        </form>
+                    <%}
+                    
+                            } %>
+                    <form action="ProductView.jsp" method="post">
+                            <input type="submit" value="Torna alla home" class="submitcart">
+                        </form>
+  
+                        
+
+                    </div>
+
+            </div>
+        </div>
+
+    </body>
+</html>

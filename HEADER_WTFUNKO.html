@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="CSS_WTFUNKO.css">
+    </head>
+    <body>
+
+        <header>
+            <h1 class="logo"> </h1> <a href="#"><img  id="logo" src="Images/Logo/logo.png" alt="Logo"> </a></h1>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle"> <!-- è conveniente inserire classi e id per essere più specifici -->
+            <!-- in questo caso si hanno classe e id: classe per css mentre id per collegarlo alla label e farli lavorare insieme-->
+        <nav>
+            
+
+            <ul>
+                <li><a href="#"> Cart </a></li>
+                <li><a href="#"> Login </a></li>
+                <li><a href="#"> About Us </a></li>
+                <li><a href="#"> New In </a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label"> <!-- for andrà a cercare un id e non la classe-->
+            <!-- in questo modo non solo cliccando sulla checkbox si mostra  il menù-->
+            <span></span>
+        </label>
+        </header>
+    </body>
+</html>

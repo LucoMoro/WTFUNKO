@@ -1,0 +1,210 @@
+:root {
+    --background: rgba(22.4%,22.4%,22.4%, 1); /* 1 sta ad indicare se esso deve essere trasparente o meno. ponendolo ad 1 non lo è*/
+    --hover: rgba(0%,91.8%,22%, 1);
+}
+
+/*************************************************************************/
+            /**Prodotti**/
+
+            .card_product{
+                box-sizing: border-box;
+                margin: 3%;
+                padding: 0;
+            }
+            
+            .p_container{
+                display:flex;
+                justify-content: center;
+                flex-wrap: wrap; /*se rimpiccioliamo la card va sotto*/
+            }
+            
+            .pcard{
+                background: white;
+                width: 270px;
+                margin: 10px;
+                border: 1px solid grey;
+                border-radius: 15px;
+            }
+            
+            .pimage{
+                width: 270px;
+                background-size: cover;
+                border-radius: 15px 15px 0 0;
+            }
+            
+            .pcard p{
+                padding-left: 8px;
+                font-weight: 600;
+                font-size: 18px;
+            }
+            
+            .pcard h2{
+                text-align: center;
+            }
+            
+            .prodlink{
+                display: block; /* lo mette grande come lo schermo e tramite i margin evitiamo sia tutto attaccato*/
+                color: #fff;
+                text-align:center;
+                background: var(--background);
+                text-decoration: none;
+                padding: 15px 20px;
+                margin: 20px 50px;
+            }
+            
+            .prodlink:hover {
+                color: var(--hover);
+            }
+            
+            .pcard:hover{
+                cursor: pointer;
+                transform: scale(1.03);
+                transition: all 0.3s ease;
+                box-shadow: 0 0 40px -10px rgba(0,0,0,0.25);
+            }
+            
+            /**********************************************************************/
+                        /** Pagina Prodotto **/
+            
+            .prodcontainer{
+                box-sizing: border-box;
+                margin-top: 10%;
+                padding: 0;
+                font-size: 18px;
+            }
+            
+            .prodcard{
+                background: white;
+                margin-left: 10%;
+                margin-right: 10%;
+               /* border: 1px solid grey;*/
+            }
+            
+            .prodimage{
+                margin:50px;
+                width: 300px;
+                background-size: cover;
+                float:left;
+            }
+            
+            .prodtitle{
+                text-align: center;
+            }
+            
+            
+            .prodlisttitle{
+                margin-top: 3%;
+                margin-left: 2%;
+            }
+
+            .prodbuttons{
+                background: white;
+                margin-left: 10%;
+                margin-right: 10%;
+               /* border: 1px solid grey;*/
+            }
+            
+            .prodsinglelink{
+                display: grid; /* lo mette grande come lo schermo e tramite i margin evitiamo sia tutto attaccato*/
+                color: #fff;
+                text-align:center;
+                background: var(--background);
+                text-decoration: none;
+                margin-left: 30%;
+                margin-right: 30%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            
+            .prodsinglelink:hover {
+                background-color: var(--hover);
+                color: var(--background);
+               /* transform: scale(1.03);
+                transition: all 0.18s ease-in-out;*/
+            }
+            
+            .producth2{
+                margin: 2%;
+                text-align: center;
+                color:black;
+            }
+            
+            
+            .btn-single-prod {
+                text-decoration: none;
+                background-color: var(--background);
+                color:white;
+                width:100%;
+                padding:10px 20px;
+                outline:none;
+                font-weight: 400;
+                font-size: 16px;
+                letter-spacing: 1px;
+                border-radius: 30px;
+            
+            }
+            
+            .btn-single-prod:hover{
+                background-color: var(--hover);
+                color:var(--background);
+            }
+            
+            .prodinput{
+                width: 50px;
+                height: 20px;
+            }
+
+            @media (max-width: 800px){
+            
+                .prodcontainer{
+                    box-sizing: border-box;
+                    margin-bottom: 30px;
+                    margin-top: 150px;
+                    padding: 0;
+                    font-size: 18px;
+                }
+            
+                .prodimage{
+                    width: 100%;
+                    background-size: cover;
+                }
+            
+                .prodlisttitle{
+                    margin-top: 10%;
+                    margin-left: 2%;
+                }
+            
+                .prodbuttons{
+                    background: white;
+                    margin-left: 4%;
+                    margin-right: 4%;
+                   /* border: 1px solid grey;*/
+                }
+            } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+       

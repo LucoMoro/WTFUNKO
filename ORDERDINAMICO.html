@@ -1,0 +1,133 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+    <%@ page contentType="text/html; charset=UTF-8"
+	import="java.util.*, it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.UserBean, 
+	it.unisa.model.OrderBean, it.unisa.model.DS.OrderModelDS, it.unisa.model.CartItem, it.unisa.model.OrderItem, it.unisa.model.DS.ProductModelDS"%>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="CSS_WTFUNKO.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body>
+
+        <% 
+	ArrayList<OrderBean> ordini = (ArrayList<OrderBean>) request.getSession().getAttribute("ordini");
+	if(ordini == null)
+	{%>
+		<p>Non hai effettuato ordini, <a href = "Home.jsp">torna alla Home</a></p>
+	<%}else{
+	
+	ArrayList<OrderItem> items;
+	int orderCode = 0;
+	int quantità;
+	double somma=0;
+	double bigSomma=0;
+	double bigIVA;
+	int code = 0;
+	String nome;
+	
+	for(int i = 0; i<ordini.size(); i++)
+	{
+		items = ordini.get(i).getOrderItems();
+		orderCode = ordini.get(i).getOrderCode();
+		somma = 0;
+		bigSomma = 0;
+		String data = "" + ordini.get(i).getDataOrdine().toString();
+	%>
+
+        <div class="c_table">
+
+            <div class="table-container">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="thimg">Immagine</th>
+                            <th>Codice ordine</th>
+                            <th>Codice prodotto </th>
+                            <th>Nome prodotto </th>
+                            <th>Prezzo</th>
+                            <th>Quantità</th>
+                            <th>Totale</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+
+                    <%
+			for(int j = 0; j<items.size(); j++)
+			{
+				code = items.get(j).getProductCode();
+				nome = items.get(j).getName();
+				quantità = items.get(j).getOrderQuantity();
+				somma = items.get(j).getOrderPrice()* quantità;
+				bigSomma = bigSomma+ somma;
+		%>
+
+                    <tbody>
+                        <tr>
+                            <td data-label="Immagine"><img src="Images/prodotti/venomgroot.jpg" alt="Venom Groot" class="timg"></td>
+                            <td data-label="Codice prodotto"> <%= orderCode %> </td>
+                            <td data-label="Nome prodotto"><%=code%></td>
+                            <td data-label="Prezzo"><%=items.get(j).getOrderPrice()%></td>
+                            <td data-label="Quantità"><%=quantità%></td>
+                            <td data-label="Totale"><%= somma %></td>
+                            <td data-label="Data"> <%= data %></td>
+                            <%
+				                }
+                            bigIVA=(bigSomma*22)/100; 
+                            bigSomma = bigSomma + bigIVA;
+                            %>
+                        </tr>
+                        
+                    </tbody>
+
+                </table>
+
+                <p>Il totale per l'ordine <%= orderCode %> è <%= bigSomma %></p>
+	            <% } }%>
+
+                   <div class="page-number-cont">
+                        <ul class=" ul-page">
+                            <li><a href="#" class="prev"> &lt; Prev </a></li>
+                            <li class="PageNumber active"><a href="#">1</a></li>
+                            <li class="PageNumber"><a href="#">2</a></li>
+                            <li class="PageNumber"><a href="#">3</a></li>
+                            <li class="PageNumber"><a href="#">4</a></li>
+                            <li><a href="#" class="next">  Next &gt; </a></li>
+                        </ul>
+                    </div>
+
+                     
+            </div>
+
+
+
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.next').click(function(){
+                    $('.ul-page').find('.PageNumber.active').next()
+                    .addClass('active');
+                    $('.ul-page').find('.PageNumber.active').prev()
+                    .removeClass('active');
+                })
+
+                $('.prev').click(function(){
+                    $('.ul-page').find('.PageNumber.active').prev()
+                    .addClass('active');
+                    $('.ul-page').find('.PageNumber.active').next()
+                    .removeClass('active');
+                })
+            })
+
+        </script>
+
+    </body>
+
+</html>

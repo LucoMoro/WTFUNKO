@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+
+<html>
+<%@ page contentType="text/html; charset=UTF-8"
+	import="java.util.*,it.unisa.model.ProductBean,it.unisa.model.Cart, it.unisa.model.UserBean,  it.unisa.model.CartItem"%>
+<head>
+    <link rel="stylesheet" type="text/css" href="CSS_WTFUNKO.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+		<%
+		ArrayList<ProductBean> prodotti = (ArrayList<ProductBean>) request.getAttribute("prodotti");
+		%>
+		
+		<div class="c_table">
+
+            <div class="table-container">
+
+    <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="thimg">Immagine</th>
+                            <th>Codice prodotto <a href="product?sort=code" style="display: none"></a></th>
+                            <th>Nome prodotto <a href="product?sort=code" style="display: none"></a></th>
+                            <th>Prezzo</th>
+                            <th>Rarità</th>
+                            <th>Disponibilità</th>
+                            <th>Franchise</th>
+                            <th>Serie</th>
+                            <th>Score medio</th>
+                            <th>Altro</th>
+                        </tr>
+                    </thead>
+		
+		<%
+		for(int i = 0; i< prodotti.size(); i++)
+			{
+				ProductBean bean = prodotti.get(i);					
+		%>
+			<tbody>
+                <tr>
+                    <td data-label="Immagine"><img src="Images/prodotti/venomgroot.jpg" alt="Venom Groot" class="timg"></td>
+                    <td data-label="Codice prodotto"> <%=bean.getCode()%> </td>
+                    <td data-label="Nome prodotto"><%=bean.getName()%></td>
+                    <td data-label="Prezzo"><%=bean.getPrice()%></td>
+                    <td data-label="Rarità"><%=bean.getRarity() %></td>
+                    <td data-label="Disponibilità"> <span class="NDisponibile"> [ No ]</span></td>
+                    <td data-label="Franchise"> <%=bean.getFranchiseName() %></td>
+                    <td data-label="Serie"><%=bean.getSeries() %></td>
+                    <td data-label="Score medio"><%=bean.getMediumScore() %></td>
+                    <td data-label="Altro">
+                        <form action="Prodotto" method="post">
+                            <input type="hidden" name="id" value="<%= bean.getCode() %>"> 
+                            <input type="submit" value="Dettagli">
+                        </form>
+
+                        <a href="product?action=addC&id=<%=bean.getCode()%>">Add to cart</a>
+                    </td>
+                </tr> 
+                    
+            </tbody>
+			<%
+			}
+		%>
+	</table>
+				
+</body>
+</html>

@@ -1,0 +1,433 @@
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="CSS_WTFUNKO.css">
+	<title>What The Funko</title>
+    <link rel="shortcut icon" type="image/x-icon" href="Images/Logo/logo.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+.registerdin {
+	margin-top:600px;
+	margin-bottom:600px;
+}
+
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+}
+
+input[type=button] {
+  background-color: #04AA6D;
+  color: white;
+  width : 10%;
+}
+
+
+.container-pop-up {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+#message2 {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message2 p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "V";
+}
+
+
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "X";
+}
+</style>
+
+</head>
+<body>
+
+	<header>
+        <h1 class="logo"> </h1> <a href="#"><img  id="logo" src="Images/Logo/logo.png" alt="Logo"> </a></h1>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle"> <!-- è conveniente inserire classi e id per essere più specifici -->
+        <!-- in questo caso si hanno classe e id: classe per css mentre id per collegarlo alla label e farli lavorare insieme-->
+    <nav>
+        
+
+        <ul>
+            <li><a href="#"> Cart </a></li>
+            <li><a href="#"> Login </a></li>
+            <li><a href="#"> About Us </a></li>
+            <li><a href="#"> New In </a></li>
+        </ul>
+    </nav>
+    <label for="nav-toggle" class="nav-toggle-label"> <!-- for andrà a cercare un id e non la classe-->
+        <!-- in questo modo non solo cliccando sulla checkbox si mostra  il menù-->
+        <span></span>
+    </label>
+    </header>
+
+	<div class="registerdin">
+<h3>Registrazione</h3>
+<p>Compila i campi e registrati al sito!</p>
+
+<div class="containerpop-up">
+  <form action="prova123" method = "post" onSubmit = "event.preventDefault(); validate(this)">
+    <label for="usrname">Username</label>
+    <input type="text" id="usrname" name="usrname" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" title="Controlla le caratteristiche richieste">
+
+    <label for="psw">Password</label>
+    <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}" title="Controlla le caratteristiche richieste" required>
+    <input type = "button" value = "Mostra Password" onClick = "myFunction()"><br>
+    
+    <div id="message2">
+  <h3>Lo <b>Username</b> deve avere:</h3>
+  <p id="letter2" class="invalid">Una <b>lettera minuscola</b></p>
+  <p id="capital2" class="invalid">Una <b>lettera maiuscola</b></p>
+  <p id="number2" class="invalid">Un <b>numero</b></p>
+  <p id="length2" class="invalid"><b>Dagli 8 ai 15 caratteri</b></p>
+</div>
+
+<div id="message">
+  <h3>La <b>Password</b> deve avere:</h3>
+  <p id="letter" class="invalid">Una <b>lettera minuscola</b></p>
+  <p id="capital" class="invalid">Una <b>lettera maiuscola</b></p>
+  <p id="number" class="invalid">Un <b>numero</b></p>
+  <p id="length" class="invalid"><b>Dagli 8 ai 15 caratteri</b></p>
+</div>
+  	
+
+
+
+  	<label for="nome">Nome:</label>
+	<input type="text" name="nome" id = "nome" placeholder="Mario" required>
+	
+	<label for="lastname">Cognome:</label>
+	<input type="text" name="cognome" id = "cognome" placeholder="Rossi" required>	
+	<br>
+	<label for="email">Email:</label>
+	<input type="text" name="email" id = "email" placeholder="aaaa@bbbb.it" required>	
+	
+	    <input type="submit" value="Conferma">
+  </form>
+  
+  <div id = "message3"></div>
+</div>
+</div>
+
+
+<div class="footercontainer">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="footer-col">
+                    <h4> get help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">spedizione</a></li>
+                        <li><a href="#">stato dell'ordine</a></li>
+                        <li><a href="#">opzioni di pagamento</a></li>
+                        <li><a href="#">politche di privacy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4> franchise</h4>
+                    <ul>
+                        <li><a href="#"> Marvel</a></li>
+                        <li><a href="#"> DC Comics</a></li>
+                        <li><a href="#"> Disney </a></li>
+                        <li><a href="#"> Lord of the rings</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4> follow us</h4>
+                    <div class= social-links>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-google-plus"></i></a>
+            <a href="#"><i class="fa fa-youtube"></i></a>
+            <a href="#"><i class="fa fa-linkedin-square"></i></a>
+            <a href="https://www.instagram.com/whatthe_funko_pop/" target="_blank"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p> copyright &copy; WTFUNKO Site designed by <span> WTFUNKO developers</span></p>
+    
+        </div>
+    </footer>
+
+</div>
+
+
+<script>
+var myInput = document.getElementById("psw");
+var myInput2 = document.getElementById("usrname");
+
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+var letter2 = document.getElementById("letter2");
+var capital2 = document.getElementById("capital2");
+var number2 = document.getElementById("number2");
+var length2 = document.getElementById("length2");
+
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+myInput2.onfocus = function() {
+	  document.getElementById("message2").style.display = "block";
+	}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+myInput2.onblur = function() {
+	  document.getElementById("message2").style.display = "none";
+	}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  var check1;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+    check1 = true;
+  } else {
+	check1 = false;
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  var check2;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+    check2 = true;
+  } else {
+	passwordCheck = "false";
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+    check2 = false;
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  var check3;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+    check3 = true;
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+    check3 = false;
+  }
+  
+  // Validate length
+  var check4;
+  if(myInput.value.length >= 8 && myInput.value.length <=15) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+    check4 = true;
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+    check4 = false;
+  }
+  
+  passwordCheck = (check1 && check2 && check3 && check4);
+}
+
+myInput2.onkeyup = function() {
+	  // Validate lowercase letters
+	  var check1;
+	  var lowerCaseLetters = /[a-z]/g;
+	  if(myInput2.value.match(lowerCaseLetters)) {  
+	    letter2.classList.remove("invalid");
+	    letter2.classList.add("valid");
+	    check1 = true;
+	  } else {
+	    letter2.classList.remove("valid");
+	    letter2.classList.add("invalid");
+	    check1 = false;
+	  }
+	  
+	  // Validate capital letters
+	  var upperCaseLetters = /[A-Z]/g;
+	  var check2;
+	  if(myInput2.value.match(upperCaseLetters)) {  
+	    capital2.classList.remove("invalid");
+	    capital2.classList.add("valid");
+	    check2 = true;
+	  } else {
+	    capital2.classList.remove("valid");
+	    capital2.classList.add("invalid");
+	    check2 = false;
+	  }
+
+	  // Validate numbers
+	  var numbers = /[0-9]/g;
+	  var check3;
+	  if(myInput2.value.match(numbers)) {  
+	    number2.classList.remove("invalid");
+	    number2.classList.add("valid");
+	    check3 = true;
+	  } else {
+	    number2.classList.remove("valid");
+	    number2.classList.add("invalid");
+	    check3 = false;
+	  }
+	  
+	  // Validate length
+	  var check4;
+	  if(myInput2.value.length >= 8 && myInput2.value.length <=15) {
+	    length2.classList.remove("invalid");
+	    length2.classList.add("valid");
+	    check4 = true;
+	  } else {
+	    length2.classList.remove("valid");
+	    length2.classList.add("invalid");
+	    check4 = false;
+	  }
+	  usernameCheck = (check1 && check2 && check3 && check4);
+	}
+	
+	function checkNamesurname(inputtxt)
+	{
+		var name = /^[A-Za-z]+$/;
+		if(inputtxt.value.match(name)) 	return true
+	
+		return false;
+	}
+	
+	function checkEmail(inputtxt)
+	{
+		var atpos = inputtxt.value.indexOf("@");
+		var dotpos = inputtxt.value.lastIndexOf(".");
+		if(atpos<1 || dotpos<atpos+2 ||  dotpos+2>= inputtxt.length)
+			{
+				return false;
+			}
+		return true;
+	}
+	
+	
+	function validate(obj)
+	{
+		var valid = true;
+		
+		var text = document.getElementById("message3");
+		text.style.color = "red";
+		text.innerHTML = "";
+		text.value = "";
+		
+		var nome = document.getElementById("nome");
+		if(!checkNamesurname(nome)) 
+			{
+				valid = false;
+				text.value = "<p>Il nome DEVE contenere solo lettere </p>";
+				text.innerHTML = text.value;
+				nome.focus();
+			}
+		
+		var cognome = document.getElementById("cognome");
+		if(!checkNamesurname(cognome)) {
+			valid = false;
+			text.value =  text.value + "<p>Il cognome DEVE contenere solo lettere </p>";
+			text.innerHTML = text.value;
+			cognome.focus();
+		}
+		
+		var email = document.getElementById("email");
+		if(checkEmail(email) == false) {
+			valid = false;
+			text.innerHTML = text.value + " Email NON valida";
+			email.focus();
+		}
+		
+		if(valid) obj.submit();
+	}
+	
+	function myFunction() {
+		  var x = document.getElementById("psw");
+		  if (x.type === "password") {
+		    x.type = "text";
+		  } else {
+		    x.type = "password";
+		  }
+		}
+	
+	
+</script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="CSS_WTFUNKO.css">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    <body>
+
+        <header>
+            <h1 class="logo"> </h1> <a href="#"><img  id="logo" src="Images/Logo/logo.png" alt="Logo"> </a></h1>
+        <input type="checkbox" id="nav-toggle" class="nav-toggle"> <!-- è conveniente inserire classi e id per essere più specifici -->
+            <!-- in questo caso si hanno classe e id: classe per css mentre id per collegarlo alla label e farli lavorare insieme-->
+        <nav>
+            
+    
+            <ul>
+                <li><a href="#"> Cart </a></li>
+                <li><a href="#"> Login </a></li>
+                <li><a href="#"> About Us </a></li>
+                <li><a href="#"> New In </a></li>
+            </ul>
+        </nav>
+        <label for="nav-toggle" class="nav-toggle-label"> <!-- for andrà a cercare un id e non la classe-->
+            <!-- in questo modo non solo cliccando sulla checkbox si mostra  il menù-->
+            <span></span>
+        </label>
+        </header>
+
+        <div class="regcontainer">
+            <section class="regsec">
+                <div class="imgreg">
+                    <img src="./Images/prodotti/doc.jpg" alt="doc">
+                </div>
+                <div class="contentreg">
+                    <div class="formreg">
+                        <h2> Register </h2>
+                        <form action="" class="register">
+
+                            <div class="inputreg">
+                                <span class="register"> Nome </span>
+                                <input type="text" name="nome">
+                            </div>
+
+                            <div class="inputreg">
+                                <span class="register"> Cognome </span>
+                                <input type="text" name="cognome">
+                            </div>
+
+                            <div class="inputreg">
+                                <span class="register"> Username </span>
+                                <input type="text" name="ID">
+                            </div>
+
+                            <div class="inputreg">
+                                <span class="register"> Email </span>
+                                <input type="text" name="email">
+                            </div>
+
+                            <div class="inputreg">
+                                <span class="register"> Password </span>
+                                <input type="password" name="password">
+                            </div>
+
+                            <div class="inputreg">
+                                <span class="register"> Numero di telefono </span>
+                                <input type="text" name="telefono">
+                            </div>
+
+                            <div class="inputreg">
+                                <input type="submit" value="Registrati" name="">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+
+        <div class="footercontainer">
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+        
+                        <div class="footer-col">
+                            <h4> get help</h4>
+                            <ul>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">spedizione</a></li>
+                                <li><a href="#">stato dell'ordine</a></li>
+                                <li><a href="#"> opzioni di pagamento</a></li>
+                                <li><a href="#">politche di privacy</a></li>
+                            </ul>
+                        </div>
+        
+                        <div class="footer-col">
+                            <h4> franchise</h4>
+                            <ul>
+                                <li><a href="#"> Marvel</a></li>
+                                <li><a href="#"> DC Comics</a></li>
+                                <li><a href="#"> Disney </a></li>
+                                <li><a href="#"> Lord of the rings</a></li>
+                            </ul>
+                        </div>
+        
+                        <div class="footer-col">
+                            <h4> follow us</h4>
+                            <div class= social-links>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                    <a href="#"><i class="fa fa-youtube"></i></a>
+                    <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                    <a href="https://www.instagram.com/whatthe_funko_pop/" target="_blank"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+        
+                    </div>
+        
+                </div>
+        
+                <div class="footer-bottom">
+                    <p> copyright &copy; WTFUNKO Site designed by <span> WTFUNKO developers</span></p>
+            
+                </div>
+            </footer>
+            
+    </body>
+    </html>
