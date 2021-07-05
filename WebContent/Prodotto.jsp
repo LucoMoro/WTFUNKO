@@ -141,7 +141,8 @@
     <div class="prodcontainer">
 
         <div class="prodcard">
-            <img class="prodimage" style = "height : auto; width : 300px" src= <%= product.getImg() %>>
+            <img src=<%= product.getImg() %> class="imgzoom" style=" margin:50px;
+            width: 250px; background-size: cover;float:left;">
             <h2 class="prodtitle"><%= product.getName() %></h2>
             <p><%= product.getDescription() %></p>
             
@@ -167,14 +168,14 @@
     <div class="prod_container">
     
     
-		<%if(product.getCode() == 56){%>
+		<%if(product.getCode() == 55){%>
 			<div class="cardp cardp1" style = "background-image: url(./Images/Product/nezuko_kamado.jpg);
     		background-size: cover;">
             <div class="cardp-content"> 
             <h2 class="cardp-title">Nezuko Kamado</h2>
             <p class="cardp-body">
                 Sarai pronto a combattere i tuoi demoni? </p>
-            <a href="Prodotto?id=57" class="button_prod"> SCOPRI DI PIÙ</a>
+            <a href="Prodotto?id=56" class="button_prod"> SCOPRI DI PIÙ</a>
 
             </div>
         </div>
@@ -185,7 +186,7 @@
             <h2 class="cardp-title">Tanjiro Kamado</h2>
             <p class="cardp-body">
                 Sarai pronto a combattere i tuoi demoni? </p>
-            <a href="Prodotto?id=56" class="button_prod"> SCOPRI DI PIÙ</a>
+            <a href="Prodotto?id=55" class="button_prod"> SCOPRI DI PIÙ</a>
 
             </div>
         </div>
@@ -200,7 +201,7 @@
             <h2 class="cardp-title">Nezuko Kamado</h2>
             <p class="cardp-body">
                 Sarai pronto a combattere i tuoi demoni? </p>
-            <a href="Prodotto?id=57" class="button_prod"> SCOPRI DI PIÙ</a>
+            <a href="Prodotto?id=56" class="button_prod"> SCOPRI DI PIÙ</a>
 
             </div>
         </div>
@@ -225,7 +226,7 @@
             <h2 class="cardp-title">Nezuko Kamado</h2>
             <p class="cardp-body">
                 Sarai pronto a combattere i tuoi demoni? </p>
-            <a href="Prodotto?id=57" class="button_prod"> SCOPRI DI PIÙ</a>
+            <a href="Prodotto?id=56" class="button_prod"> SCOPRI DI PIÙ</a>
 
             </div>
         </div>
@@ -256,6 +257,16 @@
           })
       }
       </script>
+      
+      	<script src="zoom.js"></script> 
+
+        <script>
+            mediumZoom('.imgzoom', {
+                margin: 50,
+                scrollOffset : 200
+            })
+        </script>
+        
 
     </body>
 </html>

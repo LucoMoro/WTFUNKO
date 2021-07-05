@@ -97,7 +97,7 @@
             <h2 class="cardp-title">Tanjiro Kamado</h2>
             <p class="cardp-body">
                 Sarai pronto a combattere i tuoi demoni? </p>
-            <a href="Prodotto?id=56" class="button_prod"> SCOPRI DI PIÙ</a>
+            <a href="Prodotto?id=55" class="button_prod"> SCOPRI DI PIÙ</a>
 
             </div>
         </div>

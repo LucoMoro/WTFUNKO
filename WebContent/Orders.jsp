@@ -21,7 +21,7 @@
 
 	<% 
 	ArrayList<OrderBean> ordini = (ArrayList<OrderBean>) request.getSession().getAttribute("ordini");
-	if(ordini == null)
+	if(ordini == null || ordini.size() == 0)
 	{%>
 	<div class="errorcontainer">
         <div class="errorpage">
