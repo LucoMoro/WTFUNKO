@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import it.unisa.model.DS.ProductModelDS;
 import it.unisa.model.Model.ProductModel;
 import it.unisa.model.Cart;
+import it.unisa.model.CartItem;
 import it.unisa.model.ProductBean;
 
 
@@ -46,15 +47,26 @@ public class ProductControl extends HttpServlet {
 			if (action != null) {
 				if (action.equalsIgnoreCase("addC")) {
 					int id = Integer.parseInt(request.getParameter("id"));
-					cart.addProduct(model.doRetrieveByKey(id));
-					
+					cart.addProduct(model.doRetrieveByKey(id));					
 				} else if (action.equalsIgnoreCase("deleteC")) {
 					int id = Integer.parseInt(request.getParameter("id"));
 					cart.deleteProduct(model.doRetrieveByKey(id));
-				} else if (action.equalsIgnoreCase("read")) {
+				} else if (action.equalsIgnoreCase("add2")) {
 					int id = Integer.parseInt(request.getParameter("id"));
-					request.removeAttribute("product");
-					request.setAttribute("product", model.doRetrieveByKey(id));
+					int qt = Integer.parseInt(request.getParameter("qt"));
+					CartItem x = new CartItem(model.doRetrieveByKey(id));
+					x.setQuantity(qt);
+					int k = 0;
+					for(int i = 0; i<cart.size();i++)
+					{
+						if(x.getProduct().getCode() == cart.get(i).getProduct().getCode())
+						{
+							cart.get(i).setQuantity(cart.get(i).getQuantity() + x.getQuantity());
+							k = 1;
+						}
+					}
+					if(k == 0) cart.addItem(x);
+					request.getSession().setAttribute("cart", cart);
 				} 
 			}			
 		} catch (SQLException e) {

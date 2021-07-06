@@ -23,7 +23,7 @@
         <figure class="f_slider">
             <a href="ProdottoList?franchise=Marvel"><img src="./Images/slider/iron_man2.jpg"></a>
             <a href="ProdottoList?franchise=Star Wars"><img src="./Images/slider/mandalorian2.jpg"></a>
-             <a href="ProdottoList?franchise=One Piece"><img src="./Images/slider/onepiece2.jpg"></a>
+             <a href="ProdottoList?franchise=One piece"><img src="./Images/slider/onepiece2.jpg"></a>
             <a href="ProdottoList?franchise=WWE"><img src="./Images/slider/wwe2.jpg"></a>
             <a href="ProdottoList?franchise=Marvel"><img src="./Images/slider/iron_man2.jpg"></a>
         </figure>

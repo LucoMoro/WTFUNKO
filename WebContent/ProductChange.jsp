@@ -30,7 +30,7 @@
 				Inserici un nuovo articolo:<br>
 				 Product Code: <input type="number" name = "id" id="id" value="" /><br>
 				 <div id = "result"></div>
-				 quantity: <input type="number" name = "quantity" id="quantity" value="" required/> <br> 
+				 quantity: <input type="number" name = "quantity" id="quantity" required/> <br> 
 				 <div id = "quantRes"></div>
 				 price: <input type="number" name="price" value="" required/> <br> 
 				 name: <input type="text" name="name" value="" required/> <br> 
@@ -54,7 +54,7 @@
 				Inserici l'articolo articolo con i nuovi valori:<br>
 				 Product Code: <input type="number" name = "id" id="id2" value="" /><br> 
 				 <div id = "result2"></div>
-				 quantity: <input type="number" name = "id" id="quantity2" value="" required/> <br> 
+				 quantity: <input type="number" name ="qt" id="quantity2" value="" required/> <br> 
 				  <div id = "quantRes2"></div>
 				 price: <input type="number" name="price" value="" /> <br> 
 				 name: <input type="text" name="name" value="" /> <br> 

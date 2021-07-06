@@ -89,9 +89,9 @@
 						<td data-label="Codice ordine"><%= orderCode %></td>
 						<td data-label="Codice prodotto"><%=code%></td>
 						<td data-label="Nome prodotto"><%=nome%></td>
-						<td data-label="Prezzo"><%=items.get(j).getOrderPrice()%></td>
+						<td data-label="Prezzo"><%=items.get(j).getOrderPrice()%> &#8364</td>
 						<td data-label="Quantità"><%=quantità%></td>
-						<td data-label="Totale"><%= somma %></td>
+						<td data-label="Totale"><%= somma %> &#8364</td>
 						<td data-label="Data"><%= data %></td>
 						<%
 				                }
@@ -108,7 +108,7 @@
 				Il totale per l'ordine
 				<%= orderCode %>
 				è
-				<%= bigSomma %></p>
+				<%= bigSomma %> &#8364</p>
 			<% }}%>
 		</div>
 

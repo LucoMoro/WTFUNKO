@@ -25,7 +25,8 @@ public class SetProductServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String name,franchise,series,description;
-		int id,rarity,price, quantity;
+		String img;
+		int id,rarity,price, quantity = 0;
 		double dimension;
 		
 		RequestDispatcher out;  
@@ -54,6 +55,13 @@ public class SetProductServlet extends HttpServlet {
 			}
 		else
 		{
+			try {
+				bean = model.doRetrieveByKey(id);
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			img = bean.getImg();
 			name = request.getParameter("name");
 			rarity = Integer.parseInt(request.getParameter("rarity"));
 			description = request.getParameter("description");
@@ -61,7 +69,7 @@ public class SetProductServlet extends HttpServlet {
 			dimension = Double.parseDouble(request.getParameter("dimension"));	
 			price = Integer.parseInt(request.getParameter("price"));
 			series = request.getParameter("series");
-			quantity = Integer.parseInt(request.getParameter("quantity"));
+			quantity = Integer.parseInt(request.getParameter("qt"));
 			
 			try {
 				model.doDelete(id);
@@ -79,12 +87,21 @@ public class SetProductServlet extends HttpServlet {
 			bean.setDimension(dimension);
 			bean.setPrice(price);
 			bean.setSeries(series);
+			bean.setImg(img);
 			try {
 				model.doSave2(bean);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			try {
+				newProducts = model.doRetrieveAll();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.getSession().setAttribute("products", newProducts);
 		}
 		
 		out = getServletContext().getRequestDispatcher("/ProductSuccess.jsp");

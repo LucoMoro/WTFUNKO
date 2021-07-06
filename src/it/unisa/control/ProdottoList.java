@@ -26,25 +26,18 @@ public class ProdottoList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		String franchise = request.getParameter("franchise");
-		ArrayList<ProductBean> prodotti = new ArrayList<ProductBean>();
+		ArrayList<ProductBean> prodotti1 = new ArrayList<ProductBean>();
+		ArrayList<ProductBean> prodotti2 = new ArrayList<ProductBean>();
 		
-		try {
-			prodotti = model.doRetrieveByFranchise(franchise);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		prodotti1 = (ArrayList<ProductBean>) request.getSession().getAttribute("products");
 		
-		if(prodotti == null)
+		for(int i = 0; i< prodotti1.size(); i++)
 		{
-			System.out.println("okay");
+			if(prodotti1.get(i).getFranchiseName().contentEquals(franchise))	prodotti2.add(prodotti1.get(i));
 		}
 		
-		for(int i = 0; i<prodotti.size();i++)
-		{
-			System.out.println(i);
-		}
 		
-		request.getSession().setAttribute("prodotti", prodotti);
+		request.getSession().setAttribute("prodotti", prodotti2);
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/TableFranchise.jsp");
 		dispatcher.forward(request, response);
 		

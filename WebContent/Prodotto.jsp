@@ -156,7 +156,7 @@
             </ul>
         
             <%if(product.getQuantity() !=0){%>
-            <input type="number" value="1" class="prodinput" style = "height : 20px; width : 80px">
+            <input type="number" id = "number" min = "1" value="1" class="prodinput" style = "height : 20px; width : 80px">
              <input type="button" value="Acquista" style = "width : 120px; height : 40px " id = "buy" onClick = "addToCart(<%= product.getCode() %>)">
             <%}else{ %>
             <p><i>Disponibile Prossimamente</i></p>
@@ -248,11 +248,12 @@
         <footer><%@include file="Footer.html" %></footer> 
 <script type = "text/javascript">
       function addToCart(i){
-          var action = "addC";
+          var action = "add2";
           var id = i;
+          var qt = $('#number').val();
           $.ajax({
               type: 'GET',
-              data:{action : action, id : id},
+              data:{action : action, id : id, qt : qt},
               url: 'ProductControl',
           })
       }
